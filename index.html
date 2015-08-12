@@ -7,7 +7,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <title> Des moments à partager avec SeeIt! </title>
+
 <script src="cordova.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB_oCNl3I6ov3plpNWChk-5T2QRb62DBOk&sensor=true" type="text/javascript"></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="camera.css">
+
 <script type="text/javascript">
 function Settings() {
 if ((typeof Camera !== "undefined")) {
@@ -30,7 +37,9 @@ this.popoverOptions = new CameraPopoverOptions(100, 100, 100, 100, Camera.Popove
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
- var settings;
+ $("#open_camera_button").bind ("click", onCapture);
+	
+var settings;
 settings = new Settings();
 
 navigator.camera.getPicture(onCaptureSuccess, onCaptureError, { quality : settings.quality,
@@ -65,8 +74,9 @@ function onCaptureError(message) {alert(message); }
 
 </script>
 </head>
-<body >
+<body>
 
+<div data-role="content"><a href="#" data-role="button" id="open_camera_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
 
 </body>
 </html>
