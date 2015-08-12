@@ -36,9 +36,11 @@ this.popoverOptions = new CameraPopoverOptions(100, 100, 100, 100, Camera.Popove
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
-function onDeviceReady() {alert('onDeviceReady');}
+function onDeviceReady() {
+ $("#open_camera_button").bind ("click", onCapture);
+}
 	
-function onCapture() {alert('onCapture');
+function onCapture() {alert('capture');
 var settings;
 settings = new Settings();
 
@@ -56,7 +58,7 @@ navigator.camera.getPicture(onCaptureSuccess, onCaptureError, { quality : settin
                                                                     popoverOptions : settings.popoverOptions
                                                                   });	
     
-							  
+
 }
 
 
@@ -76,6 +78,7 @@ function onCaptureError(message) {alert(message); }
 </head>
 <body>
 
-<a href="#" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px' ontouchstart="onCapture()"></a>
+<div data-role="content"><a href="#" data-role="button" id="open_camera_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
+
 </body>
 </html>
