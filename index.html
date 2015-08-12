@@ -37,10 +37,14 @@ this.popoverOptions = new CameraPopoverOptions(100, 100, 100, 100, Camera.Popove
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
- $("#open_camera_button").bind ("click", onCapture);
+$("#open_camera_button").bind ("click", onCapture);
+$("#open_network_button").bind ("click", onNetwork);
+$("#open_geolocation_button").bind ("click", onGeolocation);
+$("#open_acceleration_button").bind ("click", onAcceleration);
+$("#open_compass_button").bind ("click", onCompass);
 }
 	
-function onCapture() {alert('capture');
+function onCapture() {
 var settings;
 settings = new Settings();
 
@@ -61,24 +65,56 @@ navigator.camera.getPicture(onCaptureSuccess, onCaptureError, { quality : settin
 
 }
 
-
-
 function onCaptureSuccess(imageData) {}
-	
-
-
 function onCaptureError(message) {alert(message); }
 
+function onNetwork() {
+	var networkState = navigator.network.connection.type;
+
+        var states = {};
+        states[Connection.UNKNOWN] = 'Connexion inconnue';
+        states[Connection.ETHERNET] = 'Connexion Ethernet';
+        states[Connection.WIFI] = 'Connexion WiFi';
+        states[Connection.CELL_2G] = 'Connexion 2G';
+        states[Connection.CELL_3G] = 'Connexion 3G';
+        states[Connection.CELL_4G] = 'Connexion 4G';
+        states[Connection.NONE] = 'Pas de connexion réseau';
+
+alert(states[networkState]);
+
+}
+
+function onGeolocation() {
+navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
+
+function geolocationSuccess(position) {alert(position.coords.latitude);}
+function geolocationError(error) {alert('error');}
+}
 
 
+function onAcceleration() {
+navigator.accelerometer.getCurrentAcceleration(accelerometerSuccessPortrait, accelerometerErrorPortrait);
+	
+function accelerometerSuccessPortrait(acceleration) {alert(acceleration.x);}
+function accelerometerErrorPortrait(error) {alert('error');}
+}
 
-
+function onCompass() {
+navigator.compass.getCurrentHeading(compassSuccess, compassError);
+	
+function compassSuccess(acceleration) {alert(heading.magneticHeading);}
+function compassError(error) {alert('error');}
+}
 
 </script>
 </head>
 <body>
 
 <div data-role="content"><a href="#" data-role="button" id="open_camera_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
+<div data-role="content"><a href="#" data-role="button" id="open_network_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
+<div data-role="content"><a href="#" data-role="button" id="open_geolocation_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
+<div data-role="content"><a href="#" data-role="button" id="open_acceleration_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
+<div data-role="content"><a href="#" data-role="button" id="open_compass_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
 
 </body>
 </html>
