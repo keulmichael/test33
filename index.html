@@ -37,8 +37,6 @@ this.popoverOptions = new CameraPopoverOptions(100, 100, 100, 100, Camera.Popove
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
- $("#open_camera_button").bind ("click", onCapture);
-
 	
 onCapture() {alert('capture');
 var settings;
@@ -78,7 +76,7 @@ function onCaptureError(message) {alert(message); }
 </head>
 <body>
 
-<div data-role="content"><a href="#" data-role="button" id="open_camera_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
+<div data-role="content" ontouchstart="onCapture()"><a href="#" data-role="button" id="open_camera_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
 
 </body>
 </html>
