@@ -145,7 +145,7 @@ function accelerometerSuccessPortrait(acceleration) {alert(acceleration.x);}
 function accelerometerErrorPortrait(error) {alert('error');}
 }
 
-function onCompass() {
+function onCompass() {alert(navigator.compass);
 navigator.compass.getCurrentHeading(compassSuccess, compassError);
 	
 function compassSuccess(acceleration) {alert(heading.magneticHeading);}
