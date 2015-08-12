@@ -38,6 +38,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 $("#open_camera_button").bind ("click", onCapture);
+$("#open_gallery_button").bind ("click", onGallery);
+$("#open_SAVEDPHOTOALBUM_button").bind ("click", onSAVEDPHOTOALBUM);	
 $("#open_network_button").bind ("click", onNetwork);
 $("#open_geolocation_button").bind ("click", onGeolocation);
 $("#open_acceleration_button").bind ("click", onAcceleration);
@@ -62,11 +64,55 @@ navigator.camera.getPicture(onCaptureSuccess, onCaptureError, { quality : settin
                                                                     popoverOptions : settings.popoverOptions
                                                                   });	
     
-
-}
-
 function onCaptureSuccess(imageData) {}
 function onCaptureError(message) {alert(message); }
+}
+
+function onGallery() {
+var settings;
+settings = new Settings();
+
+navigator.camera.getPicture(onGallerySuccess, onGalleryError, { quality : settings.quality,
+                                                                    destinationType : settings.destinationType,
+                                                                    sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+                                                                    allowEdit : settings.allowEdit,
+                                                                    encodingType : settings.encodingType,
+                                                                    targetWidth : settings.targetWidth,
+                                                                    targetHeight : settings.targetHeight,
+                                                                    mediaType: settings.mediaType,
+                                                                    saveToPhotoAlbum : settings.saveToPhotoAlbum,
+                                                                    correctOrientation: settings.correctOrientation,
+								    cameraDirection: settings.cameraDirection,
+                                                                    popoverOptions : settings.popoverOptions
+                                                                  });	
+    
+function onGallerySuccess(imageData) {}
+function onGalleryError(message) {alert(message); }
+}
+
+function onSAVEDPHOTOALBUM() {
+var settings;
+settings = new Settings();
+
+navigator.camera.getPicture(onGallerySuccess, onGalleryError, { quality : settings.quality,
+                                                                    destinationType : settings.destinationType,
+                                                                    sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                                                                    allowEdit : settings.allowEdit,
+                                                                    encodingType : settings.encodingType,
+                                                                    targetWidth : settings.targetWidth,
+                                                                    targetHeight : settings.targetHeight,
+                                                                    mediaType: settings.mediaType,
+                                                                    saveToPhotoAlbum : settings.saveToPhotoAlbum,
+                                                                    correctOrientation: settings.correctOrientation,
+								    cameraDirection: settings.cameraDirection,
+                                                                    popoverOptions : settings.popoverOptions
+                                                                  });	
+    
+function onGallerySuccess(imageData) {}
+function onGalleryError(message) {alert(message); }
+}
+
+
 
 function onNetwork() {
 	var networkState = navigator.network.connection.type;
@@ -111,6 +157,8 @@ function compassError(error) {alert('error');}
 <body>
 
 <div data-role="content"><a href="#" data-role="button" id="open_camera_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
+<div data-role="content"><a href="#" data-role="button" id="open_gallery_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
+<div data-role="content"><a href="#" data-role="button" id="open_SAVEDPHOTOALBUM_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
 <div data-role="content"><a href="#" data-role="button" id="open_network_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
 <div data-role="content"><a href="#" data-role="button" id="open_geolocation_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
 <div data-role="content"><a href="#" data-role="button" id="open_acceleration_button" style="display: inline-block;width:100px;margin:10px"><img src='http://www.appliseeit.com/mobile/iconeApparareilphoto2.png' height='50px'></a></div>
