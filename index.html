@@ -145,8 +145,12 @@ function accelerometerSuccessPortrait(acceleration) {alert(acceleration.x);}
 function accelerometerErrorPortrait(error) {alert('error');}
 }
 
-function onCompass() {alert(navigator.compass);
-navigator.compass.getCurrentHeading(compassSuccess, compassError);
+function onCompass() {
+var options = {
+    frequency: 3000
+}; // Update every 3 seconds
+
+var watchID = navigator.compass.watchHeading(onSuccess, onError, options);
 	
 function compassSuccess(acceleration) {alert(heading.magneticHeading);}
 function compassError(error) {alert('error');}
