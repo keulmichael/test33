@@ -140,5 +140,5 @@ function compassError(error) {alert('error');}
 }
 
 function onOrientationChange() {alert('onOrientationChange');
-alert( WINDOW.orientation) ;
+alert(window.orientation) ;
 }
