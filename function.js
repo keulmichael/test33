@@ -139,6 +139,6 @@ function compassSuccess(acceleration) {alert(heading.magneticHeading);}
 function compassError(error) {alert('error');}
 }
 
-function OrientationChange() {
+function onOrientationChange() {
 alert( WINDOW.orientation) ;
 }
