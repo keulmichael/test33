@@ -26,7 +26,7 @@ $("#open_network_button").bind ("click", onNetwork);
 $("#open_geolocation_button").bind ("click", onGeolocation);
 $("#open_acceleration_button").bind ("click", onAcceleration);
 $("#open_compass_button").bind ("click", onCompass);
-$("#open_OrientationChange_button").bind ("click", OrientationChange);
+$("#open_OrientationChange_button").bind ("click", onOrientationChange);
 }
 	
 function onCapture() {
@@ -139,6 +139,6 @@ function compassSuccess(acceleration) {alert(heading.magneticHeading);}
 function compassError(error) {alert('error');}
 }
 
-function onOrientationChange() {
+function onOrientationChange() {alert('onOrientationChange');
 alert( WINDOW.orientation) ;
 }
