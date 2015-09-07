@@ -15,12 +15,40 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <link rel="stylesheet" href="camera.css">
 <script src="function.js"></script>
+<script src="PushNotification.js"></script>
 
 <script type="text/javascript">
 document.addEventListener('orientationchange', doOnOrientationChange);
 
 function doOnOrientationChange()
-  {alert( window.orientation) ; }
+  {
+    
+    var pushNotification = window.plugins.pushNotification;
+
+pushNotification.register(
+    successHandler, 
+    errorHandler, 
+    {
+      'senderID':'651586884852',
+        'ecb':'onNotificationGCM' // callback function
+    }
+);
+    
+
+    function successHandler(result) {
+    alert('Success: '+ result);
+}
+
+
+function errorHandler(error) {
+    alert('Error: '+ error);
+}
+  
+    
+    
+    
+    
+  }
 
 </script>
 </head>
