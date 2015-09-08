@@ -18,11 +18,11 @@
 <script src="PushNotification.js"></script>
 
 <script type="text/javascript">
-document.addEventListener('orientationchange', doOnOrientationChange);
+document.addEventListener('deviceready', doOnOrientationChange);
 
 function doOnOrientationChange()
   {
-    
+    alert('deviceready');
     var pushNotification = window.plugins.pushNotification;
 
 pushNotification.register(
